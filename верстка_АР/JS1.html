@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Землекопы</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 40px; }
+    h2 { font-weight: bold; }
+    img { margin-top: 20px; width: 250px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Расчет количества землекопов</h2>
+
+  <p>Канава 1:</p>
+  <input type="number" id="length1" placeholder="Введите длину"><br>
+  <label><input type="checkbox" id="mechanized1"> Механизированная бригада</label><br><br>
+
+  <p>Канава 2:</p>
+  <input type="number" id="length2" placeholder="Введите длину"><br>
+  <label><input type="checkbox" id="mechanized2"> Механизированная бригада</label><br><br>
+
+  <p>Канава 3:</p>
+  <input type="number" id="length3" placeholder="Введите длину"><br>
+  <label><input type="checkbox" id="mechanized3"> Механизированная бригада</label><br><br>
+
+  <button id="calcBtn">Рассчитать</button>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("calcBtn").onclick = function() {
+      let resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "";
+
+      let canals = [];
+      for (let i = 1; i <= 3; i++) {
+        let length = parseFloat(document.getElementById("length" + i).value);
+        let isMech = document.getElementById("mechanized" + i).checked;
+
+        if (isNaN(length) || length <= 0) {
+          alert("Введите корректную длину канавы " + i + "!");
+          return;
+        }
+
+        let calc = new Function('len', 'mech', `
+          let rate = mech ? 4 : 3;
+          return Math.ceil(len / rate);
+        `);
+
+        let workers = calc(length, isMech);
+        canals.push({ length, isMech, workers });
+      }
+
+      let show = confirm("Показать результат?");
+
+      if (show) {
+        for (let i = 0; i < canals.length; i++) {
+          let c = canals[i];
+          let type = c.isMech ? "Механизированная" : "Обычная";
+          let imgSrc = c.isMech
+            ? "2.png"
+            : "1.png";
+
+          resultDiv.innerHTML += `
+            <p>Канава ${i+1}</p>
+            <p>Длина канавы: ${c.length} м</p>
+            <p>Тип бригады: ${type}</p>
+            <p>Необходимо землекопов: ${c.workers}</p>
+            <img src="${imgSrc}" alt="Бригада"><br><br>
+          `;
+        }
+      } else {
+        resultDiv.innerHTML = `
+          <p>Бригада в отпуске</p>
+          <img src="3.png" alt="Отдыхают">
+        `;
+      }
+    };
+  </script>
+
+</body>
+</html>

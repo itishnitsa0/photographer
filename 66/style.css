@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.main {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.box3 {
+    width: 100%;
+    flex: 1;
+    border: 3px black solid;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.box1-2 {
+    width: 100%;
+    flex: 4;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.box2 {
+    flex: 1;
+    height: 80%;
+    border: 3px black solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    overflow-y: auto;
+}
+
+.box1 {
+    flex: 2;
+    border: 3px black solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-row {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+#textInput {
+    width: 42rem;
+    padding-inline: 0.5rem;
+}
+
+#analyzeBtn {
+    border: none;
+    border-radius: 30px;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#output {
+    width: 100%;
+    height: 25rem;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.word {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: white;
+    user-select: none;
+    cursor: grab;
+}
+
+.word:active {
+    cursor: grabbing;
+}

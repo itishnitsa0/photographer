@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Мои работы — Верстка</title>
+  <meta name="description" content="Все работы по верстке за этот семестр" />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#ff6b6b;
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      --max-w:1100px;
+      --gap:24px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#071021 120%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:36px 20px;
+      display:flex;justify-content:center;
+    }
+    .container{width:100%;max-width:var(--max-w)}
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    h1{font-size:34px;margin:10px 0 6px}
+    p.description {color:var(--muted);margin:0 0 18px;line-height:1.5; font-size:14px;}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ffa94d);padding:10px 14px;border-radius:12px;color:#071021;font-weight:600;text-decoration:none;white-space:nowrap}
+    .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
+    @media (max-width:900px){.works-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.works-grid{grid-template-columns:1fr}}
+    .work-item a {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:180px;
+      background:var(--card);
+      border-radius:12px;
+      text-decoration:none;
+      color:#e6eef6;
+      font-weight:600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align:center;
+      padding:8px;
+    }
+    .work-item a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+    }
+    footer{margin-top:28px;color:var(--muted);text-align:center;padding:12px}
+    @media (max-width:480px) {
+      body { padding:20px 12px; }
+      h1 { font-size:28px; }
+      .btn-primary { padding:8px 10px; font-size:14px; }
+    }
+
+    a, .btn-primary {
+        transition: all 0.3s ease;
+    }
+     
+    a:hover, .btn-primary:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    @keyframes pulse {
+        0%   { transform: translateY(-3px) scale(1.05); }
+        50%  { transform: translateY(-3px) scale(1.08); }
+        100% { transform: translateY(-3px) scale(1.05); }
+    }
+
+    .btn-primary:hover {
+        animation: pulse 0.6s infinite;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Мои работы</h1>
+      <a href="index.html" class="btn-primary">На главную</a>
+    </header>
+
+    <p class="description">
+      Этот сайт выполнен студенткой СПбПУ имени Петра Великого, группы 5130903/30301 — Пугач Викторией. 
+      На этой странице вы можете посмотреть другие мои работы.
+    </p>
+
+    <section class="works-grid">
+      <div class="work-item">
+        <a href="./верстка_2/index.html" target="_blank">Рисунок CSS</a>
+      </div>
+      <div class="work-item">
+        <a href="./верстка_АР/JS1.html" target="_blank">Основы кода JS</a>
+      </div>
+      <div class="work-item">
+        <a href="./Верстка 5/index.html" target="_blank">DOM-Тест</a>
+      </div>
+      <div class="work-item">
+        <a href="./66/index.html" target="_blank">Слова</a>
+      </div>
+      <div class="work-item">
+        <a href="./верстка_2/lalalalal.html" target="_blank">Flexbox-ролик</a>
+      </div>
+    </section>
+
+    
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

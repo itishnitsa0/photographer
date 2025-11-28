@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Сайт</title>
+  <meta name="description" content=" " />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#ff6b6b;
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      --max-w:1100px;
+      --gap:24px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:#0f1724;
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:36px 20px;
+      display:flex;justify-content:center;
+    }
+    .container{width:100%;max-width:var(--max-w)}
+
+
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;
+    }
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#ffa94d);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#07203a;
+      position:relative;
+      flex-shrink:0;
+    }
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-size:15px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ffa94d);padding:10px 14px;border-radius:12px;color:#071021;font-weight:600;text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:var(--gap);align-items:center;margin-bottom:36px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:28px;border-radius:var(--radius);box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:0.6px}
+    h1{font-size:34px;margin:10px 0 12px}
+    p.lead{color:var(--muted);margin:0 0 18px; white-space: pre-line;}
+    .actions{display:flex;gap:12px}
+
+    .hero-preview{border-radius:16px;overflow:hidden;height:100%;min-height:320px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071428,#09223a)}
+    .hero-preview video,.hero-preview img{width:100%;height:100%;object-fit:cover}
+
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
+    @media (max-width:900px){.portfolio{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.portfolio{grid-template-columns:1fr}}
+    .port-item{background:var(--card);border-radius:12px;overflow:hidden}
+    .port-item img{width:100%;height:180px;object-fit:cover}
+
+    .services{display:flex;gap:14px;margin-bottom:32px}
+    @media (max-width:900px){.services{flex-direction:column}}
+    .service{flex:1;background:var(--glass);padding:16px;border-radius:12px}
+    .service h4{margin:6px 0}
+    .service p{color:var(--muted);margin:0}
+
+    .contact{display:grid;grid-template-columns:1fr 360px;gap:var(--gap);align-items:start}
+    @media (max-width:900px){.contact{grid-template-columns:1fr}}
+
+    footer{margin-top:28px;color:var(--muted);text-align:center;padding:12px}
+    .muted{color:var(--muted)}
+
+    a, .btn-primary {
+      transition: all 0.3s ease;
+    }
+
+    a:hover, .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+  
+    @keyframes pulse {
+      0%   { transform: translateY(-3px) scale(1.05); }
+      50%  { transform: translateY(-3px) scale(1.08); }
+      100% { transform: translateY(-3px) scale(1.05); }
+    }
+
+    .btn-primary:hover {
+      animation: pulse 0.6s infinite;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+
+    .logo .mark .logo-wrap{
+      --size:44px; 
+      --stroke: calc(var(--size) / 14);
+      --color: #071021; 
+      --gap: calc(var(--stroke) / 2);
+      width: var(--size);
+      height: var(--size);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo .mark .logo-wrap *{box-sizing:border-box}
+
+    .logo .mark .camera{
+      position:relative;
+      width:calc(var(--size) * 0.85);
+      height:calc(var(--size) * 0.6);
+      display:block;
+    }
+
+    .logo .mark .camera .body{
+      position:absolute;
+      left:2%;
+      right:28%;
+      top:22%;
+      bottom:18%;
+      border-radius: 18% / 18%;
+      border:calc(var(--stroke) * 0.9) solid var(--color);
+      background:transparent;
+      display:block;
+      transform: translateY(4%);
+    }
+    .logo .mark .camera .body::after{
+      content:'';
+      position:absolute;
+      right:14%;
+      bottom:34%;
+      width:18%;
+      height:calc(var(--stroke) * 0.5);
+      background:var(--color);
+      border-radius:999px;
+    }
+    .logo .mark .camera .reel-left,
+    .logo .mark .camera .reel-right{
+      position:absolute;
+      width:28%;
+      height:28%;
+      border-radius:50%;
+      border:calc(var(--stroke) * 0.9) solid var(--color);
+      background:transparent;
+      top:6%;
+    }
+    .logo .mark .camera .reel-left{ left:6%; }
+    .logo .mark .camera .reel-right{ right:26%; }
+
+    .logo .mark .camera .visor{
+      position:absolute;
+      right:2%;
+      top:36%;
+      width:20%;
+      height:34%;
+    }
+    .logo .mark .camera .visor::before{
+      content:'';
+      position:absolute;
+      left:0; top:0; bottom:0; right:0;
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 85%);
+      border:calc(var(--stroke) * 0.9) solid var(--color);
+      border-left:none;
+      background:transparent;
+      border-radius:1px;
+    }
+
+    .logo .mark .camera .connector{
+      position:absolute;
+      right:24.5%;
+      width:6%;
+      height:20%;
+      top:49%;
+      transform:translateY(-50%);
+      background:transparent;
+      border-left:calc(var(--stroke) * 0.9) solid var(--color);
+    }
+
+    .logo .mark .sig{
+      display:none; 
+    }
+
+    
+    @media (max-width:360px){
+      .logo .mark .logo-wrap{ --size:36px }
+    }
+
+    .service {
+      transition: all 0.3s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6); 
+      animation: pulseService 0.6s infinite;
+    }
+
+    @keyframes pulseService {
+    0%   { transform: translateY(-3px) scale(1.03); }
+    50%  { transform: translateY(-3px) scale(1.06); }
+    100% { transform: translateY(-3px) scale(1.03); }
+    }
+
+    .port-item {
+      border-radius: 12px; 
+    }
+
+    .port-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .port-item:hover img {
+      transform: scale(1.15); 
+      z-index: 2; 
+      position: relative;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark" role="img" aria-label="Логотип Михаил Васильев">
+          <div class="logo-wrap" aria-hidden="true">
+            <div class="camera">
+              <div class="body"></div>
+              <div class="reel-left"></div>
+              <div class="reel-right"></div>
+              <div class="connector"></div>
+              <div class="visor"></div>
+            </div>
+            <div class="sig">MV</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight:700">Михаил Васильев</div>
+          <div class="muted" style="font-size:12px">Фотограф</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#services">Услуги</a>
+        <a href="#contacts">Контакты</a>
+        <a href="works.html">Мои работы</a>
+        <a class="btn-primary" href="#contacts">Заказать съемку</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Запечатлейте важные моменты красиво и естественно</h1>
+        <p class="lead">Моё знакомство с фотографией началось, когда мне было всего 13 лет. Тогда я впервые взял в руки фотоаппарат и понял, что с его помощью можно не просто фиксировать моменты, а создавать истории, наполненные чувствами и атмосферой. С тех пор съёмка стала не просто увлечением, а настоящим делом жизни.
+За годы работы я попробовал себя в самых разных направлениях: от портретной и свадебной съёмки до съёмок концертов, мероприятий и автомобилей. Мне нравится наблюдать за людьми, улавливать живые эмоции, движение, свет — и превращать всё это в кадры, которые хочется пересматривать снова и снова.
+Я считаю, что хорошая фотография — это не только техника и композиция, а прежде всего умение почувствовать момент. Именно поэтому перед съёмкой я всегда стараюсь понять человека, его настроение, цель и ожидания. Благодаря этому снимки получаются не просто красивыми — они становятся искренними и живыми.
+За годы работы я стал победителем нескольких конкурсов фото- и видеосъёмки, участвовал в выставках и коллаборациях с творческими командами. Но для меня главная награда — это ваши эмоции, когда вы видите результат и узнаёте себя в кадре.
+Фотография — это мой способ общения с миром.
+Каждый кадр — это маленькая история, и я рад, что могу рассказывать их через объектив своей камеры.</p>
+        <div class="actions">
+          <a class="btn-primary" href="#contacts">Заказать съемку</a>
+          <a href="#portfolio" style="padding:10px 12px;border-radius:12px;background:transparent;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--muted)">Посмотреть портфолио</a>
+        </div>
+      </div>
+
+      <div class="hero-preview" aria-hidden="true">
+        <video id="heroVideo" autoplay loop playsinline>
+          <source src="preview.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2 style="margin:0 0 14px">Портфолио</h2>
+      <div class="portfolio">
+        <div class="port-item"><img src="photo_1.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_2.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_3.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_4.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_5.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_6.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_7.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_8.jpeg" alt=""></div>
+        <div class="port-item"><img src="photo_9.jpeg" alt=""></div>
+      </div>
+    </section>
+
+    <section id="services" style="margin-bottom:22px">
+      <h2 style="margin:0 0 14px">Услуги</h2>
+      <div class="services">
+        <div class="service">
+          <h4>Свадебная съемка</h4>
+          <p class="muted">Полный день, репортаж и портретная сессия.</p>
+        </div>
+        <div class="service">
+          <h4>Корпоративы и мероприятия</h4>
+          <p class="muted">Документирование событий, фото для отчетности и соцсетей.</p>
+        </div>
+        <div class="service">
+          <h4>Автосъемка & репортаж</h4>
+          <p class="muted">Коммерческая съемка автомобилей и ретушь.</p>
+        </div>
+        <div class="service">
+          <h4>Дополнительно</h4>
+          <p class="muted">Видеосъёмка и монтаж коротких роликов,<br>ретушь и цветокоррекция,<br>подбор локации и создание концепции съёмки.<br>Каждый заказ обсуждается индивидуально. Я внимательно отношусь к деталям и делаю всё, чтобы фотографии передавали ваш характер и эмоции именно такими, какие они есть.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="contact">
+      <div>
+        <h2>Контакты</h2>
+        <p class="muted">Я всегда открыт к новым проектам, идеям и сотрудничеству.<br>Если вы хотите заказать съёмку, уточнить стоимость или просто обсудить задумку — напишите мне удобным способом:</p>
+        <div style="margin-top:12px;background:var(--card);padding:12px;border-radius:12px">
+          <div>📍 Санкт-Петербург / Москва</div>
+          <div>📷 Instagram / Telegram: <a href="https://t.me/bpwps" target="_blank">@bpwps</a></div>
+        </div>
+      </div>
+    </section>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const video = document.getElementById('heroVideo');
+    function enableSound() {
+      if (video.muted) {
+        video.muted = false;
+        video.play().catch(() => {});
+      }
+      document.removeEventListener('click', enableSound);
+      document.removeEventListener('mousemove', enableSound);
+      document.removeEventListener('keydown', enableSound);
+    }
+    document.addEventListener('click', enableSound);
+    document.addEventListener('mousemove', enableSound);
+    document.addEventListener('keydown', enableSound);
+  </script>
+  <footer>
+  Моменты, которые стоят кадра
+</footer>
+
+</body>
+</html>
